@@ -23,15 +23,28 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func dogCalculateButtonPressed(sender: UIButton) {
-        let converstionNumber = 7.0
+        var converstionNumber = 0.0
+        var twoYearsPassed = 0.0
         dogCalculatedYearsLabel.hidden = false
-        let dogYearsInHumanYears = Double((dogYearsTextField.text as NSString).doubleValue)
-        dogCalculatedYearsLabel.text = "Your dog's is \(dogYearsInHumanYears * converstionNumber) years old"
+        var dogYearsInHumanYears = Double((dogYearsTextField.text as NSString).doubleValue)
+        
+        if dogYearsInHumanYears <= 2 {
+            converstionNumber = 10.5
+//            twoYearsPassed = 0.0
+            
+        } else if dogYearsInHumanYears > 2 {
+            converstionNumber = 4
+            dogYearsInHumanYears -= 2.0
+            twoYearsPassed = 21.0
+        }
+        
+        
+        dogCalculatedYearsLabel.text = "Your dog's is \((dogYearsInHumanYears * converstionNumber) + twoYearsPassed) years old"
         dogYearsTextField.text = ""
         dogYearsTextField.resignFirstResponder()
         
     }
-
+    
 
 }
 
